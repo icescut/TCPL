@@ -1,12 +1,39 @@
 /**
- * ÌâÄ¿£º´òÓ¡ÊäÈëÖĞµ¥´Ê³¤¶ÈµÄÖ±·½Í¼¡£Ë®Æ½·½ÏòµÄÖ±·½Í¼±È½ÏÈİÒ×¡£
- * ±àÒë£ºgcc -o exe\1-13.exe 1-13.c
+ * é¢˜ç›®ï¼šæ‰“å°è¾“å…¥ä¸­å•è¯é•¿åº¦çš„ç›´æ–¹å›¾ã€‚æ°´å¹³æ–¹å‘çš„ç›´æ–¹å›¾æ¯”è¾ƒå®¹æ˜“ã€‚
+ * ç¼–è¯‘ï¼šgcc -o exe\1-13.exe 1-13.c
  */
 #include <stdio.h>
 
+#define IN 1
+#define OUT 0
+#define MAX_LEN 50
 main() {
-    int c;
+    int c, state, i, j, len, other;
+    int words[MAX_LEN+1] = {0};
+    len = other = 0;
+    state = OUT;
     while((c = getchar()) != EOF) {
-
+        if(c == ' ' || c == '\t' || c == '\n'){
+            if(len <= MAX_LEN)
+                words[len]++;
+            else
+                other++;
+            len = 0;
+            state = OUT;
+        } else {
+            len++;
+            state = IN;
+        }
     }
+    printf("word's length  count\n");
+    for(i = 1; i <= MAX_LEN; i++){
+        if(words[i] != 0){
+            printf("%13d%7d", i, words[i]);
+            for(j = 0; j < words[i]; j++)
+                putchar('*');
+            putchar('\n');
+        }
+    }
+    if(other != 0)
+        printf("There are %d words exceed the max length 50\n");
 }
