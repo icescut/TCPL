@@ -1,12 +1,24 @@
 /**
- * ÌâÄ¿£º±àĞ´Ò»¸ö³ÌĞò£¬ÒÔÃ¿ĞĞÒ»¸öµ¥´ÊµÄĞÎÊ½´òÓ¡ÆäÊäÈë
- * ±àÒë£ºgcc -o exe\1-12.exe 1-12.c
+ * é¢˜ç›®ï¼šç¼–å†™ä¸€ä¸ªç¨‹åºï¼Œä»¥æ¯è¡Œä¸€ä¸ªå•è¯çš„å½¢å¼æ‰“å°å…¶è¾“å…¥
+ * ç¼–è¯‘ï¼šgcc -o exe\1-12.exe 1-12.c
  */
 #include <stdio.h>
 
+#define IN 1
+#define OUT 0
+
 main() {
-    int c;
+    int c, flag;
+    flag = OUT;
     while((c = getchar()) != EOF) {
-        
+          if(c == ' ' || c == '\t' || c == '\n'){
+               if(flag == IN){
+                    putchar('\n');
+                    flag = OUT;
+                }
+          else {
+                 flag = IN;
+                 putchar(c);
+          }
     }
 }
