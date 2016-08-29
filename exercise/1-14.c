@@ -1,12 +1,26 @@
 /**
- * ÌâÄ¿£º´òÓ¡¸÷¸öµ¥´Ê³öÏÖÆµ¶ÈµÄÖ±·½Í¼¡£
- * ±àÒë£ºgcc -o exe\1-14.exe 1-14.c
+ * é¢˜ç›®ï¼šæ‰“å°å„ä¸ªå­—ç¬¦å‡ºç°é¢‘åº¦çš„ç›´æ–¹å›¾ã€‚
+ * ç¼–è¯‘ï¼šgcc -o exe\1-14.exe 1-14.c
  */
 #include <stdio.h>
-
+#include <ctype.h>
+#define MAX_CHAR 128
 main() {
-    int c;
-    while((c = getchar()) != EOF) {
+    int c, i, j;
+    int chars[MAX_CHAR] = {0};
 
+    while((c = getchar()) != EOF) {
+        if(c < MAX_CHAR)
+            chars[c]++;
     }
+    printf("char  count\n");
+    for(i = 0; i <= MAX_CHAR; i++){
+        if(chars[i] != 0 && isprint(i)){
+            printf("%c%7d", i, chars[i]);
+            for(j = 0; j < chars[i]; j++)
+                putchar('*');
+            putchar('\n');
+        }
+    }
+    return 0;
 }
