@@ -11,14 +11,15 @@ main() {
     int c, flag;
     flag = OUT;
     while((c = getchar()) != EOF) {
-          if(c == ' ' || c == '\t' || c == '\n'){
-               if(flag == IN){
-                    putchar('\n');
-                    flag = OUT;
-                }
-          else {
-                 flag = IN;
-                 putchar(c);
-          }
+        if(c == ' ' || c == '\t' || c == '\n'){
+            if(flag == IN){
+                putchar('\n');
+                flag = OUT;
+            }
+        } else {
+            flag = IN;
+            putchar(c);
+        }
     }
+    return 0;
 }

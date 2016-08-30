@@ -1,4 +1,4 @@
-	/**
+/**
  * 题目: 修改打印最长文本行的程序，使之可以打印任意输入行的长度及尽量多地打印文本
  * 编译：gcc -o exe\1-16.exe 1-16.c
  */
@@ -17,7 +17,7 @@ main() {
 
     max = 0;
     while((len = getline(line, MAXLINE)) > 0) {
-        printf("%d, %s");
+        printf("%d, %s", len, line);
         if(len > max) {
             max = len;
             copy(longest, line);
