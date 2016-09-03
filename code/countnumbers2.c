@@ -1,4 +1,4 @@
-	/**
+/**
  * 统计输入的各个字符、空白符及其他字符出现的次数
  * 编译：gcc -o exe\countnumbers2.exe countnumbers2.c
  */

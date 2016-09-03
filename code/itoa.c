@@ -1,7 +1,7 @@
 /**
- * 转换整数为字符串
+ * 将数字n转换为字符串
  */
-void itos(int n, char s[]){
+void itoa(int n, char s[]){
     int i, sign;
     if((sign = n) < 0)
         n = -n;

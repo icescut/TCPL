@@ -1,4 +1,4 @@
-	/**
+/**
  * 题目: 改写binsearch，使while内只进行一次判断
  */
 int binsearch(int x, int v[], int n){
