@@ -5,12 +5,13 @@
 #include "calc.h"
 
 int getop(char s[]){
-    int i, c;
+    int i, c, c2;
     while((s[0] = c = getch()) == ' ' || c == '\t')
         ;
     s[1] = '\0';
     i = 0;
     if(islower(c)){
+        c2 = c;
         while(islower(s[++i] = c = getch()))
             ;
         s[i] = '\0';
@@ -19,7 +20,7 @@ int getop(char s[]){
         if(strlen(s) > 1)
             return NAME;
         else {
-            return c; //有点不对，已经是下一个位置
+            return c2;
     }
     if(!isdigit(c) && c != '.')
         return c;
