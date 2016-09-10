@@ -1,5 +1,6 @@
 /**
  * 求点到原点间距离
+ * 编译：gcc
  */
 #include <math.h>
 #include <stdio.h>
