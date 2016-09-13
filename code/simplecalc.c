@@ -1,3 +1,7 @@
+/**
+ * 简单计算器程序，读取输入然后累加
+ * 编译：gcc -o exe\simplecalc.exe simplecalc.c atof.c getline.c
+ */
 #include <stdio.h>
 
 #define MAXLINE 100

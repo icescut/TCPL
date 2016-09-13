@@ -1,5 +1,6 @@
 /**
  * 逆波兰计算器
+ * gcc -o ..\exe\inversepoland.exe *.c
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,7 +13,8 @@ int main(){
     double op2;
     char s[MAXOP];
 
-    while((type = getop(s)) != EOF)
+    while((type = getop(s)) != EOF) {
+        printf("type = %c", type);
         switch(type){
         case NUMBER:
             push(atof(s));
@@ -38,5 +40,6 @@ int main(){
             printf("error:unknown command\n");
             break;
         }
+    }
     return 0;
 }
