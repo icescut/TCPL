@@ -2,6 +2,8 @@
   * 题目: 扩展minprintf，使与printf的功能更接近
  */
 #include <stdarg.h>
+#include <stdio.h>
+#include <ctype.h>
 
 void minprintf(char *fmt, ...) {
     va_list ap;
@@ -17,7 +19,7 @@ void minprintf(char *fmt, ...) {
         }
         i = 0;
         subfmt[0] = '%';
-        while(!isalpha(subfmt[++i] = *++p)
+        while(*(p+1) && !isalpha(subfmt[++i] = *++p)
             ;
         sunfmt[++i] = '\0';
         switch(*p) {
