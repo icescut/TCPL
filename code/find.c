@@ -1,5 +1,7 @@
 /**
  * 查找输入中符合命令行参数的行
+ * gcc -o exe\find.exe find.c getline.c
+ * 例子：find.exe rld
  */
 #include <string.h>
 #include <stdio.h>

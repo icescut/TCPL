@@ -4,20 +4,21 @@
 
 int getop(char s[]){
     int i, c;
-    while((s[0] = c = getch()) == ' ' || c == '\t')
-        ;
+    static int lastc;
+
+    if(lastc == 0) {
+        c = getch();
+    } else {
+        c = lastc;
+        lastc = 0;
+    }
+
+    while((s[0] = c) == ' ' || c == '\t')
+        c = getch();
     s[1] = '\0';
-    if(!isdigit(c) && c != '.' && c != '-')
+    if(!isdigit(c) && c != '.')
         return c;
     i = 0;
-    if(c == '-')
-        if(isdigit(c = getch()) || c == '.')
-            s[++i] = c;
-        else {
-            if(c != EOF)
-                ungetch(c);
-            return '-';
-        }
     if(isdigit(c))
         while(isdigit(s[++i] = c = getch()))
             ;
@@ -26,6 +27,6 @@ int getop(char s[]){
             ;
     s[i] ='\0';
     if(c != EOF)
-        ungetch(c);
+        lastc = c;
     return NUMBER;
 }

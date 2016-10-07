@@ -1,5 +1,6 @@
-	/**
+/**
  * 题目: 修改逆波兰计算器，增加几个操作:不弹出元素下打印栈顶元素/复制栈顶元素/交换栈顶元素/清空栈。
+ * 编译：gcc -o ..\exe\4-4.exe *.c
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,14 +32,14 @@ int main(){
         case '/':
             op2 = pop();
             if(op2 != 0.0)
-                push(pop() - op2);
+                push(pop() / op2);
             else
                 printf("erroe:zero divisor\n");
             break;
         case '%':
             op2 = pop();
             if(op2 != 0.0)
-                push(fmod(pop() - op2));
+                push(fmod(pop(), op2));
             else
                 printf("erroe:zero divisor\n");
             break;
@@ -60,6 +61,9 @@ int main(){
             break;
         case 'c':
             clear();
+            break;
+        case '\n':
+            printf("\t%.8g\n", pop());
             break;
         default:
             printf("error:unknown command\n");

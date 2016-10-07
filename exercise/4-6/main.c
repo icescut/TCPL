@@ -1,5 +1,6 @@
-		/**
+/**
  * 题目: 修改逆波兰计算器，使用大写字母保存临时变量
+ * 编译：gcc -o ..\exe\4-6.exe *.c
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,6 +15,7 @@ int main(){
     char s[MAXOP];
 
     while((type = getop(s)) != EOF){
+        //printf("type = %c\n", type);
         switch(type){
         case NUMBER:
             push(atof(s));
@@ -34,14 +36,14 @@ int main(){
         case '/':
             op2 = pop();
             if(op2 != 0.0)
-                push(pop() - op2);
+                push(pop() / op2);
             else
                 printf("erroe:zero divisor\n");
             break;
         case '%':
             op2 = pop();
             if(op2 != 0.0)
-                push(fmod(pop() - op2));
+                push(fmod(pop(), op2));
             else
                 printf("erroe:zero divisor\n");
             break;
@@ -51,13 +53,13 @@ int main(){
             break;
         case '=':
             pop();
-            if(var <= 'A' && var >= 'Z')
+            if(var >= 'A' && var <= 'Z')
                 push(val[var - 'A'] = pop());
             else
                 printf("not valid variable\n");
             break;
         default:
-            if(type <= 'A' && type >= 'Z')
+            if(type >= 'A' && type <= 'Z')
                 push(val[type - 'A']);
             else if(type == 'v')
                 push(v);

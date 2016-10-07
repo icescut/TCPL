@@ -1,4 +1,4 @@
-	/**
+/**
  * 题目: 改写getch,ungetch，缓冲区只有一个字符
  */
 #include <stdio.h>

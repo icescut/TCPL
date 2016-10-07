@@ -1,5 +1,6 @@
 /**
  * 得到输入中的整数，测试指针参数的使用
+ * gcc -o exe\getint.exe getint.c getch.c
  */
 #include <ctype.h>
 #include <stdio.h>
@@ -32,7 +33,7 @@ int getint(int *pn){
     sign = c == '-' ? -1 : 1;
     if(c == '+' || c == '-')
         c = getch();
-    for(*pn = 0; isdigit(c); c = fetch())
+    for(*pn = 0; isdigit(c); c = getch())
         *pn = 10 * *pn + (c - '0');
     *pn *= sign;
     if(c != EOF)

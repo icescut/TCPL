@@ -1,6 +1,6 @@
 /**
- * 逆波兰计算器
- * gcc -o ..\exe\inversepoland.exe *.c
+ * 逆波兰计算器，修改getop函数，不使用ungetch
+ * gcc -o ..\exe\4-11.exe *.c
  */
 #include <stdio.h>
 #include <stdlib.h>

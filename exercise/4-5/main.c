@@ -1,5 +1,6 @@
-	/**
+/**
  * 题目: 修改逆波兰计算器，使能处理库函数，如sin,cos,exp,pow。
+ * 编译：gcc -o ..\exe\4-5.exe *.c
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -34,16 +35,19 @@ int main(){
         case '/':
             op2 = pop();
             if(op2 != 0.0)
-                push(pop() - op2);
+                push(pop() / op2);
             else
                 printf("erroe:zero divisor\n");
             break;
         case '%':
             op2 = pop();
             if(op2 != 0.0)
-                push(fmod(pop() - op2));
+                push(fmod(pop(), op2));
             else
                 printf("erroe:zero divisor\n");
+            break;
+        case '\n':
+            printf("\t%.8g\n", pop());
             break;
         default:
             printf("error:unknown command\n");

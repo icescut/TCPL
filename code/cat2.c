@@ -1,5 +1,6 @@
 /**
  * 模仿unix的cat命令
+ */
 #include <stdio.h>
 void filecopy(FILE *, FILE *);
 int main(int argc, char *argv[]) {
@@ -9,8 +10,8 @@ int main(int argc, char *argv[]) {
         filecopy(stdin, stdout);
     else {
         while(--argc > 0) {
-            if((fp = fopen(*++argv)) == NULL) {
-                fprintf(stderr,"%s: can't open %s\n, prog, *argv);
+            if((fp = fopen(*++argv, "r")) == NULL) {
+                fprintf(stderr,"%s: can't open %s\n, prog", *argv);
                 exit(1);
             } else  {
                 filecopy(fp, stdout);
@@ -19,7 +20,7 @@ int main(int argc, char *argv[]) {
         }
     }
     if(ferror(stdout)) {
-        fprintf(stderr,"%s: error in writing stdout\n, prog);
+        fprintf(stderr,"%s: error in writing stdout\n", prog);
         exit(2);
     }
     return 0;
@@ -27,5 +28,5 @@ int main(int argc, char *argv[]) {
 void filecopy(FILE *ifp, FILE *ofp) {
     int c;
     while((c = getc(ifp)) != EOF)
-        putc(c);
+        putc(c, ofp);
 }

@@ -1,5 +1,7 @@
 /**
  * 模仿unix的cat命令
+ * gcc -o exe\cat.exe cat.c
+ */
 #include <stdio.h>
 
 void filecopy(FILE *, FILE *);
@@ -10,8 +12,8 @@ int main(int argc, char *argv[]) {
         filecopy(stdin, stdout);
     else {
         while(--argc > 0) {
-            if((fp = fopen(*++argv)) == NULL) {
-                printf("cat: can't open %s\n, *argv);
+            if((fp = fopen(*++argv, "r")) == NULL) {
+                printf("cat: can't open %s\n", *argv);
                 return 1;
             } else  {
                 filecopy(fp, stdout);
@@ -25,5 +27,5 @@ int main(int argc, char *argv[]) {
 void filecopy(FILE *ifp, FILE *ofp) {
     int c;
     while((c = getc(ifp)) != EOF)
-        putc(c);
+        putc(c, ofp);
 }

@@ -21,7 +21,3 @@ double pop(void){
         return 0.0;
     }
 }
-
-void clear(){
-    sp = 0;
-}

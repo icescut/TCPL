@@ -1,6 +1,6 @@
 /**
- * 逆波兰计算器
- * gcc -o ..\exe\inversepoland.exe *.c
+ * 题目：逆波兰计算器，使用getline代替getch和ungetch
+ * gcc -o ..\exe\4-10.exe *.c
  */
 #include <stdio.h>
 #include <stdlib.h>

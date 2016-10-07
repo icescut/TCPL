@@ -1,5 +1,6 @@
 /**
  * 对输入的行排序，使用指针数组保存
+ * gcc -o exe\chararrayqsort.exe chararrayqsort.c alloc.c getline.c
  */
 #include <stdio.h>
 #include <string.h>
@@ -22,6 +23,7 @@ int main(){
         return 0;
     } else {
         printf("errer: too many input to sort\n");
+        //printf("%d\n", nlines);
         return 1;
     }
 }
@@ -30,14 +32,18 @@ int readlines(char *lineptr[], int maxlines){
     int len, nlines;
     char *p, line[MAXLEN];
     nlines = 0;
-    while((len = getline(line, MAXLEN])) > 0)
-        if(nlines > MAXLINES || (p = alloc(len)) == NULL)
+    while((len = getline(line, MAXLEN)) > 0) {
+        //printf("nlines: %d, len: %d\n", nlines, len);
+
+        if(nlines > MAXLINES || (p = alloc(len)) == NULL) {
+            //printf("p = %x", p);
             return -1;
-        else {
+        } else {
             line[len - 1] = '\0';
             strcpy(p, line);
             lineptr[nlines++] = p;
         }
+    }
     return nlines;
 }
 

@@ -1,5 +1,6 @@
-	/**
+/**
  * 对输入的行排序，使用指针数组保存。可排序字符或数字，使用函数指针数学。
+ * gcc -o exe\arrayqsort.exe arrayqsort.c numcmp.c alloc.c getline.c
  */
 #include <stdio.h>
 #include <string.h>
@@ -12,17 +13,17 @@ int getline(char *, int);
 char *alloc(int);
 int readlines(char *p[], int max);
 void writelines(char *p[], int lines);
-void qsort(void *v[], int l, int r, void (*comp)(void *, void *));
+void qsort(void *v[], int l, int r, int (*comp)(void *, void *));
 int numcmp(char *, char *);
 
-int main(){
+int main(int argc, char *argv[]){
     int nlines, numeric;
     numeric = 0;
     if(argc > 1 && strcmp(argv[1], "-n") == 0)
         numeric = 1;
     if((nlines = readlines(lineptr, MAXLINES)) >= 0){
         qsort((void **)lineptr, 0, nlines - 1,
-            (int(*)(void *, void *))(numeric ? numcmp : strcmp));
+            (int (*)(void *, void *))(numeric ? numcmp : strcmp));
         writelines(lineptr, nlines);
         return 0;
     } else {
@@ -35,7 +36,7 @@ int readlines(char *lineptr[], int maxlines){
     int len, nlines;
     char *p, line[MAXLEN];
     nlines = 0;
-    while((len = getline(line, MAXLEN])) > 0)
+    while((len = getline(line, MAXLEN)) > 0)
         if(nlines > MAXLINES || (p = alloc(len)) == NULL)
             return -1;
         else {

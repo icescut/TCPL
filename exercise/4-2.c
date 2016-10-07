@@ -1,11 +1,20 @@
 /**
- * atof函数：把字符串s转换为相应的双精度浮点数支持指数
+ * 完善atof函数：把字符串s转换为相应的双精度浮点数支持指数
+ * 编译：gcc -o exe\4-2.exe 4-2.c
  */
 #include <ctype.h>
 
+double atof(char s[]);
+
+int main(int argc, char const *argv[]) {
+    char *s = "1.23e-2";
+    printf("%g\n", atof(s));
+    return 0;
+}
+
 double atof(char s[]) {
     //power为小数位对应的10的幂
-    double val, power,power2, e, factor;
+    double val, power, power2, e, factor;
     int i, sign;
 
     //跳过空白符
@@ -26,7 +35,7 @@ double atof(char s[]) {
 
     if(s[i] == 'e' || s[i] == 'E')
         i++;
-    factor = s[i] == '-' ? 0.1, 10;
+    factor = s[i] == '-' ? 0.1 : 10;
     if(s[i] == '+' || s[i] == '-')
         i++;
     for(e = 0; isdigit(s[i]); i++)

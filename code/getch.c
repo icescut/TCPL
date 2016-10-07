@@ -1,14 +1,8 @@
-/**
- * 题目: 使得可以处理EOF（-1）
- */
 #include <stdio.h>
-#include <string.h>
-#include "calc.h"
 
 #define BUFSIZE 100
-// 使用int代替char即可
 int bufp = 0;
-int buf[BUFSIZE]
+char buf[BUFSIZE];
 
 int getch(void){
     return (bufp > 0) ? buf[--bufp] : getchar();

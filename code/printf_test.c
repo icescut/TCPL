@@ -1,5 +1,6 @@
 /**
  * printf函数测试
+ * gcc -o exe\printf_test.exe printf_test.c
  */
 #include <stdio.h>
 

@@ -1,5 +1,8 @@
-	/**
+/**
  * 查找输入中符合命令行参数的行
+ * gcc -o exe\find2.exe find2.c getline.c
+ * 例子：find.exe -x -n rld
+ *      find.exe -xn rld
  */
 #include <string.h>
 #include <stdio.h>
@@ -22,7 +25,7 @@ int main(int argc, char *argv[]){
                 number = 1;
                 break;
             default:
-                finf("find: illegal option\n");
+                printf("find: illegal option\n");
                 argc = 0;
                 found = -1;
                 break;
@@ -30,15 +33,18 @@ int main(int argc, char *argv[]){
         }
     }
 
-    while(getline(line, MAXLINE) > 0){
-        lineno++;
-        if((strstr(line, argv[1]) != NULL) != except){
-            if(number){
-                printf("%ld:", lineno);
+    if(argc != 1)
+        printf("Usage: find -x -n pattern\n");
+    else
+        while(getline(line, MAXLINE) > 0){
+            lineno++;
+            if((strstr(line, *argv) != NULL) != except){
+                if(number){
+                    printf("%ld:", lineno);
+                }
+                printf("%s", line);
+                ++found;
             }
-            printf("%s", line);
-            ++found;
         }
-    }
     return found;
 }

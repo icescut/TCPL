@@ -1,5 +1,6 @@
 /**
  * 复制输入到输出
+ * gcc -o exe\copy2.exe copy2.c
  */
 #include <windows.h>
 

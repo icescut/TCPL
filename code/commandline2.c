@@ -1,5 +1,6 @@
 /**
  * 打印命令行输入
+ * gcc -o exe\commandline2.exe commandline2.c
  */
 #include <stdio.h>
 

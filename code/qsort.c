@@ -1,4 +1,4 @@
-void qsort(int v[], interface left, int right){
+void qsort(int v[], int left, int right){
     int i, last;
     if(left >= right)
         return;
